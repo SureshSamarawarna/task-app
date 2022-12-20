@@ -4,12 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-
-
-@Data@NoArgsConstructor@AllArgsConstructor
-public class Task implements SuperEntity{
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Task implements SuperEntity {
     private int id;
     private String content;
     private Status status;
@@ -21,7 +19,7 @@ public class Task implements SuperEntity{
         this.projectId = projectId;
     }
 
-    public enum Status{
-        COMPLETED,NOT_COMPLETED
+    public enum Status {
+        COMPLETED, NOT_COMPLETED
     }
 }
