@@ -21,6 +21,7 @@ public class UserController {
         System.out.println(user);
     }
 
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @PatchMapping("/me")
     public void updateUserAccountDetails(){
 
