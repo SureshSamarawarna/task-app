@@ -33,7 +33,7 @@ public class GlobalExceptionHandler {
         Map<String, Object> errAttributes = new LinkedHashMap<>();
         errAttributes.put("status", HttpStatus.CONFLICT.value());
         errAttributes.put("error", HttpStatus.CONFLICT.getReasonPhrase());
-        errAttributes.put("message", "Duplicate ent found");
+        errAttributes.put("message", "Duplicate entity found");
         errAttributes.put("timestamp", new Date().toString());
         return errAttributes;
     }

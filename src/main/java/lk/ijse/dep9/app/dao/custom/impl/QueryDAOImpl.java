@@ -9,7 +9,6 @@ public class QueryDAOImpl implements QueryDAO {
 
     private final JdbcTemplate jdbc;
 
-
     public QueryDAOImpl(JdbcTemplate jdbc) {
         this.jdbc = jdbc;
     }

@@ -15,7 +15,6 @@ import java.util.Optional;
 @Component
 public class TaskDAOImpl implements TaskDAO {
 
-
     private final JdbcTemplate jdbc;
 
     public TaskDAOImpl( JdbcTemplate jdbc) {
