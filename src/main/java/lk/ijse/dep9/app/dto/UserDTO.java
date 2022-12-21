@@ -1,6 +1,5 @@
 package lk.ijse.dep9.app.dto;
 
-import com.sun.source.doctree.SerialDataTree;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,15 +9,17 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
-@Data@NoArgsConstructor@AllArgsConstructor
-public class UserDTO implements Serializable {
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserDTO implements Serializable {
     @NotBlank(message = "Full name can't be empty or null")
-    @Pattern(regexp = "^[A-Za-z ]+$",message = "Invalid name")
+    @Pattern(regexp = "^[A-Za-z ]+$", message = "Invalid name")
     private String fullName;
     @NotBlank(message = "Username can't be empty or null")
     private String username;
     @NotEmpty(message = "Password can't be empty or null")
-    @Length(min = 3,message = "Password should be atleast 3 charactor long")
+    @Length(min = 3, message = "Password should be at least 3 characters long")
     private String password;
 }

@@ -10,24 +10,27 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.validation.Valid;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/users")
-@CrossOrigin
 public class UserController {
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = "application/json")
     public void createUserAccount(@Valid @RequestBody UserDTO user){
         System.out.println(user);
-
     }
+
     @PatchMapping("/me")
     public void updateUserAccountDetails(){
 
     }
-    @GetMapping
+
+    @GetMapping("/me")
     public void getUserAccountDetails(){
 
     }
+
     @DeleteMapping("/me")
     public void deleteUserAccount(){
 
