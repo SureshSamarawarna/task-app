@@ -9,4 +9,10 @@ public interface UserService extends SuperService {
 
     UserDTO verifyUser(String username, String password);
 
+    UserDTO getUserAccountDetails(String username);
+
+    void updateUserAccountDetails(UserDTO userDTO);
+
+    void deleteUserAccount(String username);
+
 }

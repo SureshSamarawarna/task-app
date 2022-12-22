@@ -28,19 +28,21 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PatchMapping(value = "/me", consumes = "application/json")
-    public void updateUserAccountDetails(@Valid @RequestBody UserDTO user) {
-        System.out.println(user);
+    public void updateUserAccountDetails(
+            @Validated(ValidationGroups.Update.class) @RequestBody UserDTO user,
+            @RequestAttribute String username) {
+        user.setUsername(username);
+        userService.updateUserAccountDetails(user);
     }
 
     @GetMapping(value = "/me", produces = "application/json")
-    public UserDTO getUserAccountDetails() {
-        System.out.println("getUserAccountDetails()");
-        return new UserDTO();
+    public UserDTO getUserAccountDetails(@RequestAttribute String username) {
+        return userService.getUserAccountDetails(username);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/me")
-    public void deleteUserAccount() {
-        System.out.println("deleteUserAccount()");
+    public void deleteUserAccount(@RequestAttribute String username) {
+        userService.deleteUserAccount(username);
     }
 }
