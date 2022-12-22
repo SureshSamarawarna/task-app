@@ -64,7 +64,8 @@ public class ProjectTaskServiceImpl implements ProjectTaskService {
 
     @Override
     public void renameTask(String username, TaskDTO task) {
-        taskDAO.update(transformer.toTask(task));
+        Task taskEntity = taskDAO.findById(task.getId()).get();
+        taskEntity.setContent(task.getContent());
     }
 
     @Override
@@ -85,7 +86,7 @@ public class ProjectTaskServiceImpl implements ProjectTaskService {
 
     @Override
     public void updateTaskStatus(String username, TaskDTO taskDTO, boolean completed) {
-        Task task = transformer.toTask(taskDTO);
+        Task task = taskDAO.findById(taskDTO.getId()).get();
         task.setStatus(completed? Task.Status.COMPLETED : Task.Status.NOT_COMPLETED);
         taskDAO.update(task);
     }

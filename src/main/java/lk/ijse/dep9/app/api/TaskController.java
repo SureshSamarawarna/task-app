@@ -4,6 +4,7 @@ import lk.ijse.dep9.app.dto.TaskDTO;
 import lk.ijse.dep9.app.service.custom.ProjectTaskService;
 import lk.ijse.dep9.app.util.ValidationGroups;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,21 +43,21 @@ public class TaskController {
     }
 
     @GetMapping(value = "/{taskId:\\d+}", produces = "application/json")
-    public TaskDTO getTaskDetails(@RequestAttribute String username,
+    public TaskDTO getTaskDetails(@AuthenticationPrincipal(expression = "username") String username,
                                   @PathVariable int projectId,
                                   @PathVariable int taskId) {
         return taskService.getTaskDetails(username, new TaskDTO(taskId, projectId));
     }
 
     @GetMapping
-    public List<TaskDTO> getAllTasks(@RequestAttribute String username,
+    public List<TaskDTO> getAllTasks(@AuthenticationPrincipal(expression = "username") String username,
                                      @PathVariable int projectId) {
         return taskService.getAllTasks(username, projectId);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PatchMapping(value = "/{taskId:\\d+}", params = "completed")
-    public void updateTaskStatus(@RequestAttribute String username,
+    public void updateTaskStatus(@AuthenticationPrincipal(expression = "username") String username,
                                  @PathVariable int projectId,
                                  @PathVariable int taskId,
                                  @RequestParam boolean completed) {
