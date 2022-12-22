@@ -28,7 +28,7 @@ public class Transformer {
         return mapper.map(projectDTO,Project.class);
     }
 
-    public ProjectDTO toProjecDTO(Project project){
+    public ProjectDTO toProjectDTO(Project project){
         return mapper.map(project,ProjectDTO.class);
 
     }
