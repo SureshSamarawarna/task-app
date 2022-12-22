@@ -46,7 +46,7 @@ public class GlobalExceptionHandler {
         Map<String, Object> errAttributes = new LinkedHashMap<>();
         errAttributes.put("status", HttpStatus.FORBIDDEN.value());
         errAttributes.put("error", HttpStatus.FORBIDDEN.getReasonPhrase());
-        errAttributes.put("message", "Access Denied");
+        errAttributes.put("message", "Access denied");
         errAttributes.put("timestamp", new Date().toString());
         return errAttributes;
     }
